@@ -1,9 +1,9 @@
-
 # structured-helm
 ```
 
                                    ___---___
                              ___---___---___---___
+                             
                        ___---___---    *    ---___---___
                  ___---___---    o/ 0_/  @  o ^   ---___---___
            ___---___--- @  i_e J-U /|  -+D O|-| (o) /   ---___---___
@@ -34,29 +34,4 @@ _|___________________________________________________________________________|_
 _______________________________________________________________________________
 Jouni Marttila - Normand Veilleux - Evan M Corcoran
 ```
-# Introduction
-Consistent helm charts for standardizing and customizing a DevOps practitioner world.
-
-# Environment
-Environments allow helm chart customization for different environments like development, testing, or production.  Environments can what applcations to include and configuration options for each application.
-
-# Providers
-
-# Standard tagging
-environmental varialbes
-
-# Security
-
-# Shared resources
-
-# Obserability
-
-# Management
-
-# Operators
-
-# CI/CD
-- cue
-
-# Specification
-
+Consistent helm charts for standardizing and customizing a DevOps practitioner world
