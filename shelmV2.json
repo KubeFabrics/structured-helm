@@ -1,0 +1,143 @@
+{
+    "type": "object",
+    "properties": {
+        "targets": {
+            "type": "object",
+            "description": "Targets control how helm charts are deployed for different operating environments like development, testing, staging, and production.",
+            "properties": {
+                "enabled charts": {
+                    "type": "string",
+                    "description": "A list of this Fabrics charts to enable",
+                    "default": "all"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A descriptive name for this chart"
+                },
+                "replicate": {
+                    "type": "object",
+                    "description": "Manages how replicant controllers are created",
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "description": "minimum number of pods",
+                            "default": "1",
+                            "minimum": 1,
+                            "maximum": 10
+                        },
+                        "max": {
+                            "type": "integer",
+                            "description": "Maximum number of pods",
+                            "default": "1",
+                            "minimum": 1
+                        },
+                        "default": {
+                            "type": "integer",
+                            "description": "The default number of pods",
+                            "default": "1",
+                            "minimum": 1
+                        }
+                    },
+                    "required": [
+                        "min",
+                        "max",
+                        "default"
+                    ]
+                },
+                "cluster": {
+                    "type": "object",
+                    "description": "How to configure clusters",
+                    "properties": {
+                        "development": {
+                            "type": "boolean",
+                            "description": "Configure using cluster technologies development mode"
+                        },
+                        "node-min": {
+                            "type": "integer",
+                            "description": "The minimum number of cluster nodes to deploy",
+                            "default": "1",
+                            "minimum": 1
+                        },
+                        "node-max": {
+                            "type": "integer",
+                            "description": "The maximum number of cluster nodes to deploy",
+                            "default": "3",
+                            "maximum": 3
+                        },
+                        "node-default": {
+                            "type": "integer",
+                            "description": "The default number of nodes to deploy when autoscaling is enabled"
+                        }
+                    },
+                    "required": [
+                        "development",
+                        "node-min",
+                        "node-max",
+                        "node-default"
+                    ]
+                },
+                "networking": {
+                    "type": "object",
+                    "description": "Configure networking options for this deployment",
+                    "properties": {
+                        "loadbalancer": {
+                            "type": "boolean",
+                            "description": "Deploy load balancer",
+                            "default": false
+                        },
+                        "ingress": {
+                            "type": "boolean",
+                            "description": "Deploy an ingress",
+                            "default": false
+                        },
+                        "nodeport": {
+                            "type": "boolean",
+                            "description": "Open a node port",
+                            "default": false
+                        },
+                        "svc": {
+                            "type": "boolean",
+                            "description": "Create a service account",
+                            "default": true
+                        }
+                    },
+                    "required": [
+                        "loadbalancer",
+                        "ingress",
+                        "nodeport",
+                        "svc"
+                    ]
+                }
+            },
+            "required": [
+                "enabled charts",
+                "name",
+                "replicate",
+                "cluster",
+                "networking"
+            ]
+        },
+        "providers": {
+            "type": "object",
+            "description": "credential/keys for accessing different cloud providers, including bare metal, virtual machines, and containers"
+        },
+        "environment": {
+            "type": "object"
+        },
+        "security": {
+            "type": "object"
+        },
+        "shared-resources": {
+            "type": "object"
+        },
+        "management": {
+            "type": "object"
+        },
+        "": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "targets"
+    ]
+}

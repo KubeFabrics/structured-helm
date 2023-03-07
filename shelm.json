@@ -1,0 +1,115 @@
+{
+    "type": "object",
+    "properties": {
+        "targets": {
+            "type": "object",
+            "description": "Targets control how helm charts are deployed for different operating environments like development, testing, staging, and production.",
+            "properties": {
+                "enabled charts": {
+                    "type": "string",
+                    "description": "A list of this Fabrics charts to enable",
+                    "default": "all"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A descriptive name for this chart"
+                },
+                "replicate": {
+                    "type": "object",
+                    "description": "Manages how replicant controllers are created",
+                    "properties": {
+                        "min": {
+                            "type": "integer"
+                        },
+                        "max": {
+                            "type": "integer"
+                        },
+                        "default": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "min",
+                        "max",
+                        "default"
+                    ]
+                },
+                "cluster": {
+                    "type": "object",
+                    "properties": {
+                        "development": {
+                            "type": "boolean"
+                        },
+                        "node-min": {
+                            "type": "integer"
+                        },
+                        "node-max": {
+                            "type": "integer"
+                        },
+                        "node-default": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "development",
+                        "node-min",
+                        "node-max",
+                        "node-default"
+                    ]
+                },
+                "networking": {
+                    "type": "object",
+                    "properties": {
+                        "loadbalancer": {
+                            "type": "boolean"
+                        },
+                        "ingress": {
+                            "type": "boolean"
+                        },
+                        "nodeport": {
+                            "type": "boolean"
+                        },
+                        "svc": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "loadbalancer",
+                        "ingress",
+                        "nodeport",
+                        "svc"
+                    ]
+                }
+            },
+            "required": [
+                "enabled charts",
+                "name",
+                "replicate",
+                "cluster",
+                "networking"
+            ]
+        },
+        "providers": {
+            "type": "object",
+            "description": "credential/keys for accessing different cloud providers, including bare metal, virtual machines, and containers"
+        },
+        "environment": {
+            "type": "object"
+        },
+        "security": {
+            "type": "object"
+        },
+        "shared-resources": {
+            "type": "object"
+        },
+        "management": {
+            "type": "object"
+        },
+        "": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "targets"
+    ]
+}
